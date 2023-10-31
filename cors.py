@@ -6,6 +6,7 @@ try:
     import requests
     import sys
     import time
+    import pyfiglet
 except ImportError:
     os.system("pip3 install requests")
 
@@ -13,10 +14,9 @@ except ImportError:
 def main():
     try:
         os.system("clear")
-        print("   __   __   __   __  ")
-        print("  /  ` /  \ |__) /__` ")
-        print("  \__, \__/ |  \ .__/ ")
-        print("   @nmochea          \n")
+        ascii_banner = pyfiglet.figlet_format("CORS")
+        print(ascii_banner)
+        print(" Author:  @nmochea          \n")
         
         parser = argparse.ArgumentParser()
         parser.add_argument('-file', help='File containing URLs', required=True)
@@ -44,7 +44,7 @@ def main():
             "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
             "Accept-Encoding": "gzip, deflate, br",
             "Content-Type": "application/x-www-form-urlencoded",
-            "Connection": "clsoe"
+            "Connection": "close"
         }
 
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
